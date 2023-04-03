@@ -71,7 +71,7 @@ public class ConnectionServiceImpl implements ConnectionService {
        }
        user.setConnected(false);
        user.setMaskedIp(null);
-
+       userRepository2.save(user);
        return user;
     }
     @Override
