@@ -28,7 +28,7 @@ public class ConnectionServiceImpl implements ConnectionService {
        else if(user.getOriginalCountry().getCountryName().toString().equalsIgnoreCase(countryName)){
            return user;
        }
-        if (user.getServiceProviderList().size()==0) {  // check size or use isempty()
+        if (user.getServiceProviderList() == null) {  // check size or use isempty()
             throw new Exception("Unable to connect");
         }
        else{
@@ -58,6 +58,7 @@ public class ConnectionServiceImpl implements ConnectionService {
            user.getConnectionList().add(connection);
 
            serviceProvider.getConnectionList().add(connection);
+           userRepository2.save(user);
            serviceProviderRepository2.save(serviceProvider);
        }
        return user;
